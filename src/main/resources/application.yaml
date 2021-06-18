@@ -4,3 +4,12 @@ server:
 spring:
   application:
     name: "@project.name@"
+  cloud:
+    gateway:
+      routes:
+        - id: peopleModuleV1
+          uri: http://localhost:30000
+          predicates:
+            - Path=/peopleModule/**
+          filters:
+            - RewritePath=/peopleModule, /v1/
