@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "fc34976d-63e4-436b-badb-c5c252e3f122",
-		"name": "sm-gateway Keycloak Integration",
+		"name": "sm-gateway-keycloak-integration",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -40,7 +40,7 @@
 					"urlencoded": [
 						{
 							"key": "client_id",
-							"value": "demo-client",
+							"value": "admin-cli",
 							"type": "text"
 						},
 						{
@@ -57,11 +57,17 @@
 							"key": "grant_type",
 							"value": "password",
 							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
 						}
 					]
 				},
 				"url": {
-					"raw": "http://localhost:40005/auth/realms/demo-realm/protocol/openid-connect/token",
+					"raw": "http://localhost:40005/auth/realms/demorealm/protocol/openid-connect/token",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -70,7 +76,7 @@
 					"path": [
 						"auth",
 						"realms",
-						"demo-realm",
+						"demorealm",
 						"protocol",
 						"openid-connect",
 						"token"
@@ -91,7 +97,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:20000/people-module/v1/people/7",
+					"raw": "http://localhost:20000/people-module/v1/people",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -100,8 +106,7 @@
 					"path": [
 						"people-module",
 						"v1",
-						"people",
-						"7"
+						"people"
 					]
 				}
 			},
@@ -159,7 +164,7 @@
 	"variable": [
 		{
 			"key": "token",
-			"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJySURmMy1SUkdqXzhHRFI0aFpQeW42NHNNOWpHRFBtd2t6UW9aNVJPYThNIn0.eyJleHAiOjE2MjQ0NDc0NDksImlhdCI6MTYyNDQ0NzE0OSwianRpIjoiYWYwNmQ0MmEtOWQ2Yi00ZWY1LTkyYmItNjBmNTBhNTU3Y2M1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0MDAwNS9hdXRoL3JlYWxtcy9kZW1vcmVhbG0iLCJzdWIiOiJkZjMzNTU4Yy1iNDIyLTQyMDctODcyNi1lMzUyMjllNzNlN2QiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYzhlNjVhZmUtMzcxMy00ZWUxLWJkNjctYjA4ZWQ2MzFjMjNiIiwiYWNyIjoiMSIsInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRlbW8gdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6ImRlbW91c2VyIiwibG9jYWxlIjoiZW4iLCJnaXZlbl9uYW1lIjoiZGVtbyIsImZhbWlseV9uYW1lIjoidXNlciIsImVtYWlsIjoic21hbkBtYW5pa2lhbS5uZXQifQ.iENxhIxnNJTdARc2Fktkjk0gAwkCzF3wgHgogndXemUT4xe9JuFHufZ6CbC-9PIzFA-Y6zSwyXgSdCnW9WpfHSGT_5-fb4fkiXXXDGSpYw2bhXuSKq7aKmPTIDlw5p_3tJNUTeFk5j9WeyCQ9xLOn2c6OgZgzjKzpDlo3B8J3Rvp_gfk-n2AHZJvNWyLqn1Si7UkO6Rp_TkZdDo1cS32bZD7TmCGIZFak-SqZSeNcIthrR6cYy1tmfBf3tpqhqYSZk01CCRjhFjkDEcmJCuASL83rveH9Ls1oMWZNkFjI__GaMv6DPA2S0Kt-4e4wEEn3bGHA9fW5cD6bsy6ibeN3g"
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJySURmMy1SUkdqXzhHRFI0aFpQeW42NHNNOWpHRFBtd2t6UW9aNVJPYThNIn0.eyJleHAiOjE2MjQ0NDkxNjMsImlhdCI6MTYyNDQ0ODg2MywianRpIjoiMjUyN2Y3ZDItMjQ1Ni00ZWVlLWJkMDQtZjE1NmM0OTk3NDViIiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0MDAwNS9hdXRoL3JlYWxtcy9kZW1vcmVhbG0iLCJzdWIiOiJkZjMzNTU4Yy1iNDIyLTQyMDctODcyNi1lMzUyMjllNzNlN2QiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiOTVlYTc5M2EtYjNkZC00NzM4LWI2MDktNGNjMWFhMjI5MjgyIiwiYWNyIjoiMSIsInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRlbW8gdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6ImRlbW91c2VyIiwibG9jYWxlIjoiZW4iLCJnaXZlbl9uYW1lIjoiZGVtbyIsImZhbWlseV9uYW1lIjoidXNlciIsImVtYWlsIjoic21hbkBtYW5pa2lhbS5uZXQifQ.B_et6AG89VwmUBtwU1se0oZ2mm8PXD_oHs8vovTb--HeGmiN00bvpcZ2msl0pUTxtl0r9Sr4n-Z5_vZUpZqUJgj4Y8dP0lNEU3GQmHay_K4n66XZ8kJeZZgZ_rIlU1ea8ZSzBxk33VpF9cOD-ttWOYheoqNhM63mcNMuYOk7A-0iem_Z8lY3mdOVBstNxUTLhcJpJdf4X-jBjLXW9_rheGCBzZ85Tkka5Pnc_QDqHfXF3aV9SkeIfow7zlA1lYcNXbQLZgPIDT7gYnYYGBMHs2sMpL7kuYRe0ibNNcwWb35NGzblOyW7AD7RRznNr_kZGeAyUZ8ITw3SanohDF0uyQ"
 		}
 	]
 }
