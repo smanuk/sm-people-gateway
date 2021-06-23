@@ -1,0 +1,165 @@
+{
+	"info": {
+		"_postman_id": "fc34976d-63e4-436b-badb-c5c252e3f122",
+		"name": "sm-gateway Keycloak Integration",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:20000/actuator/health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:20000/actuator/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "20000",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authorize",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "demo-client",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "demouser",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:40005/auth/realms/demo-realm/protocol/openid-connect/token",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "40005",
+					"path": [
+						"auth",
+						"realms",
+						"demo-realm",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:20000/people-module/v1/people",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:20000/people-module/v1/people/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "20000",
+					"path": [
+						"people-module",
+						"v1",
+						"people",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:20000/people-module/v1/people/7",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:20000/people-module/v1/people/7",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "20000",
+					"path": [
+						"people-module",
+						"v1",
+						"people",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJySURmMy1SUkdqXzhHRFI0aFpQeW42NHNNOWpHRFBtd2t6UW9aNVJPYThNIn0.eyJleHAiOjE2MjQ0NDc0NDksImlhdCI6MTYyNDQ0NzE0OSwianRpIjoiYWYwNmQ0MmEtOWQ2Yi00ZWY1LTkyYmItNjBmNTBhNTU3Y2M1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo0MDAwNS9hdXRoL3JlYWxtcy9kZW1vcmVhbG0iLCJzdWIiOiJkZjMzNTU4Yy1iNDIyLTQyMDctODcyNi1lMzUyMjllNzNlN2QiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJhZG1pbi1jbGkiLCJzZXNzaW9uX3N0YXRlIjoiYzhlNjVhZmUtMzcxMy00ZWUxLWJkNjctYjA4ZWQ2MzFjMjNiIiwiYWNyIjoiMSIsInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwibmFtZSI6ImRlbW8gdXNlciIsInByZWZlcnJlZF91c2VybmFtZSI6ImRlbW91c2VyIiwibG9jYWxlIjoiZW4iLCJnaXZlbl9uYW1lIjoiZGVtbyIsImZhbWlseV9uYW1lIjoidXNlciIsImVtYWlsIjoic21hbkBtYW5pa2lhbS5uZXQifQ.iENxhIxnNJTdARc2Fktkjk0gAwkCzF3wgHgogndXemUT4xe9JuFHufZ6CbC-9PIzFA-Y6zSwyXgSdCnW9WpfHSGT_5-fb4fkiXXXDGSpYw2bhXuSKq7aKmPTIDlw5p_3tJNUTeFk5j9WeyCQ9xLOn2c6OgZgzjKzpDlo3B8J3Rvp_gfk-n2AHZJvNWyLqn1Si7UkO6Rp_TkZdDo1cS32bZD7TmCGIZFak-SqZSeNcIthrR6cYy1tmfBf3tpqhqYSZk01CCRjhFjkDEcmJCuASL83rveH9Ls1oMWZNkFjI__GaMv6DPA2S0Kt-4e4wEEn3bGHA9fW5cD6bsy6ibeN3g"
+		}
+	]
+}
