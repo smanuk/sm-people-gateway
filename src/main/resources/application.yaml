@@ -10,6 +10,11 @@ spring:
         - id: peopleModuleV1
           uri: http://localhost:30000
           predicates:
-            - Path=/peopleModule/**
+            - Path=/people-module/**
           filters:
-            - RewritePath=/peopleModule, /v1/
+            - RewritePath=/people-module, /
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:40005/auth/realms/demorealm
